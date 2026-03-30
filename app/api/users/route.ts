@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     const user = new User(body);
     await user.save();
     
-    const userResponse = user.toObject();
+    const userResponse: any = user.toObject();
     delete userResponse.password;
     
     return NextResponse.json({ success: true, data: userResponse }, { status: 201 });

@@ -24,6 +24,7 @@ export default function DashboardLayout({
   const pathname = usePathname()
   const [username, setUsername] = useState<string | null>(null)
   const [mounted, setMounted] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -35,6 +36,7 @@ export default function DashboardLayout({
       router.push('/login')
     } else {
       setUsername(storedUsername)
+      setIsAuthenticated(true)
     }
   }, [router])
 
@@ -52,7 +54,7 @@ export default function DashboardLayout({
     return 'Dashboard'
   }
 
-  if (!mounted) {
+  if (!mounted || !isAuthenticated) {
     return null
   }
 
