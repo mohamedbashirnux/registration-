@@ -4,13 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
@@ -41,7 +35,6 @@ export function LoginForm({
       const result = await response.json()
 
       if (result.success) {
-        // Store login state in localStorage
         localStorage.setItem('isLoggedIn', 'true')
         localStorage.setItem('username', result.data.username)
         router.push('/dashboard')
@@ -59,17 +52,12 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <div className="flex justify-center mb-4">
-            <img 
-              src="/images/Xirfadhub PNG-01 (1).png" 
-              alt="Logo" 
-              className="h-20 w-auto object-contain"
-            />
-          </div>
-          <CardTitle className="text-2xl">Login to Dashboard</CardTitle>
-          <CardDescription>
-            Enter your credentials to access the admin dashboard
-          </CardDescription>
+          <img 
+            src="/images/Xirfadhub PNG-01 (1).png" 
+            alt="Xirfad Hub Logo" 
+            className="h-40 w-60 mx-auto"
+          />
+          <CardTitle className="text-2xl font-bold">Login to Dashboard</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
